@@ -12,14 +12,18 @@ from sauceclient import SauceClient
 # This is the only code you need to edit in your existing scripts.
 # The command_executor tells the test to run on Sauce, while the desired_capabilities
 # parameter tells us which browsers and OS to spin up.
+username = os.environ['SAUCE_USERNAME']
+access_key = os.environ['SAUCE_ACCESS_KEY']
+build = os.environ["TRAVIS_BUILD_NUMBER"]
+tags = [os.environ["TRAVIS_PYTHON_VERSION"], "CI"]
+sauce_client = SauceClient(username, access_key)
 desired_cap = {
     'platform': "Mac OS X 10.12",
     'browserName': "chrome",
     'version': "latest",
+    'build': build,
+    'tags': tags,
 }
-username = os.environ['SAUCE_USERNAME']
-access_key = os.environ['SAUCE_ACCESS_KEY']
-sauce_client = SauceClient(username, access_key)
 driver = webdriver.Remote(
    command_executor='http://{}:{}@ondemand.saucelabs.com:80/wd/hub'.format(username, access_key),
    desired_capabilities=desired_cap)

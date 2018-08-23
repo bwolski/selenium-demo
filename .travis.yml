@@ -1,0 +1,11 @@
+language: python
+python:
+  - "3.6"
+install:
+  - pip install --user -U selenium sauceclient
+script:
+  - python selenium-simple.py
+addons:
+  sauce_connect:
+    username: "ben_wolski"
+    access_key: "ca8ed953-f7fa-458e-a2f3-2f791cc147a3"
