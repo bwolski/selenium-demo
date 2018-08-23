@@ -2,7 +2,7 @@ language: python
 python:
   - "3.6"
 install:
-  - pip install --user -U selenium sauceclient
+  - pip install -U selenium sauceclient
 script:
   - python selenium-simple.py
 addons:
