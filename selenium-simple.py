@@ -38,7 +38,7 @@ try:
     sauce_client.jobs.update_job(driver.session_id, passed=True)
 except:
     sauce_client.jobs.update_job(driver.session_id, passed=False)
-    return False
+    exit(1)
 finally:
     driver.quit()
     
