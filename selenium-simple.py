@@ -38,7 +38,7 @@ try:
     sauce_client.jobs.update_job(driver.session_id, passed=True)
 except:
     sauce_client.jobs.update_job(driver.session_id, passed=False)
-    exit(1)
+    exit(1) #causes Travis to fail build
 finally:
     driver.quit()
     
