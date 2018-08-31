@@ -14,8 +14,14 @@ from sauceclient import SauceClient
 # parameter tells us which browsers and OS to spin up.
 username = os.environ['SAUCE_USERNAME']
 access_key = os.environ['SAUCE_ACCESS_KEY']
-build = os.environ["TRAVIS_BUILD_NUMBER"]
-tags = [os.environ["TRAVIS_PYTHON_VERSION"], "CI"]
+
+try: 
+  build = os.environ["TRAVIS_BUILD_NUMBER"]
+  tags = [os.environ["TRAVIS_PYTHON_VERSION"], "CI"]
+except:
+  build = "local_run"
+  tags = []
+
 sauce_client = SauceClient(username, access_key)
 desired_cap = {
     'platform': "Mac OS X 10.12",
